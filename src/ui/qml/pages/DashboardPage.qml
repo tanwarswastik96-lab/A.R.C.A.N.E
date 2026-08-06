@@ -1,23 +1,43 @@
 import QtQuick
 import QtQuick.Controls
 
-Item {
+import "../components/dashboard"
+
+Flickable {
+
+    anchors.fill: parent
+
+    clip: true
+
+    contentWidth: width
+    contentHeight: contentColumn.implicitHeight + 40
 
     Column {
 
-        anchors.fill: parent
-        spacing: 20
+        id: contentColumn
+
+        width: parent.width
+
+        spacing: 36
+
+        Item {
+            width: 1
+            height: 20
+        }
 
         Text {
+
             text: "Welcome, " + UserManager.name
 
             color: "white"
 
-            font.pixelSize: 34
+            font.pixelSize: 36
+
             font.bold: true
         }
 
         Text {
+
             text: "ARCANE Artificial Intelligence Operating System"
 
             color: "#8A8F9E"
@@ -25,32 +45,79 @@ Item {
             font.pixelSize: 16
         }
 
-        Rectangle {
+        Item {
 
             width: parent.width
-            height: 420
+            height: 320
 
-            radius: 24
-
-            color: "#111113"
-
-            border.color: "#1E1F29"
-            border.width: 1
-
-            Text {
+            NeuralOrb {
 
                 anchors.centerIn: parent
-
-                text: "NEURAL CORE\n\nComing in Sprint 3.2"
-
-                horizontalAlignment: Text.AlignHCenter
-
-                color: "#5E6CFF"
-
-                font.pixelSize: 30
-                font.bold: true
             }
 
+        }
+
+        Grid {
+
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            columns: 3
+
+            rowSpacing: 20
+            columnSpacing: 20
+
+            StatusCard { title: "CPU"; value: "Ready" }
+            StatusCard { title: "Memory"; value: "Active" }
+            StatusCard { title: "Voice"; value: "Offline" }
+
+            StatusCard { title: "Network"; value: "Online" }
+            StatusCard { title: "AI"; value: "GPT-5.5" }
+            StatusCard { title: "Automation"; value: "Idle" }
+
+        }
+
+        Text {
+
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            text: "Quick Actions"
+
+            color: "white"
+
+            font.pixelSize: 22
+
+            font.bold: true
+        }
+
+        Grid {
+
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            columns: 3
+
+            rowSpacing: 20
+            columnSpacing: 20
+
+            QuickActionCard {
+                icon: "💬"
+                title: "Open Chat"
+            }
+
+            QuickActionCard {
+                icon: "🧠"
+                title: "Memory"
+            }
+
+            QuickActionCard {
+                icon: "⚙"
+                title: "Settings"
+            }
+
+        }
+
+        Item {
+            width: 1
+            height: 40
         }
 
     }
