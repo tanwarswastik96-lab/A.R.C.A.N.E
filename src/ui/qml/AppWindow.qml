@@ -1,23 +1,21 @@
 import QtQuick
 import QtQuick.Controls
 
+import "components/navigation"
+
 Item {
 
     Rectangle {
         anchors.fill: parent
         color: "#09090B"
+    }
 
-        Text {
-            anchors.centerIn: parent
+    ArcaneSidebar {
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
 
-            text: "ARCANE"
-
-            color: "white"
-
-            font.pixelSize: 42
-
-            font.bold: true
-        }
+        anchors.margins: 20
     }
 
 }
